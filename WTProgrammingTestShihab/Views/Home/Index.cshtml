@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+@{
+
+    var sortedByValue = ViewData["sortedByValue"] as List<WTProgrammingTestShihab.Models.MyArray>;
+    var sortedByLocation = ViewData["sortedByLocation"] as List<WTProgrammingTestShihab.Models.MyArray>;
+}
+<body>
+    <h2>Sorted Data By Value(Parent)</h2>
+    <table class="table">
+        <tr>
+            <th>
+                Value(Parent)
+            </th>
+            <th>
+                Characters
+            </th>
+            <th>
+                Value(Child)
+            </th>
+            <th>
+                Location
+            </th>
+        </tr>
+
+        @foreach (var item in sortedByValue)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.characters)
+                </td>
+                @foreach (var subitem in item.data)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => subitem.value)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => subitem.location)
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+
+    <h2>Sorted Data By Location(Last Column)</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                Value(Parent)
+            </th>
+            <th>
+                Characters
+            </th>
+            <th>
+                Value(Child)
+            </th>
+            <th>
+                Location
+            </th>
+        </tr>
+
+        @foreach (var item in sortedByLocation)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.characters)
+                </td>
+                @foreach (var subitem in item.data)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => subitem.value)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => subitem.location)
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
+</body>
